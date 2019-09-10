@@ -2,6 +2,7 @@
 
 void fore_back_grnd(char ** com,int and_flag , int cnt)
 {
+
   int pid,status;
   pid = fork();
 
@@ -34,5 +35,7 @@ void fore_back_grnd(char ** com,int and_flag , int cnt)
   {
     printf("%s process with pid : %d started\n",com[0],pid);
   }
+
+  return;
 
 }

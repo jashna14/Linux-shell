@@ -1,11 +1,11 @@
-#include<stdio.h>
-#include<string.h>
-#include<stdlib.h>
-#include<unistd.h>
-#include<sys/types.h>
-#include<sys/wait.h>
-#include<readline/readline.h>
-#include<readline/history.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <readline/readline.h>
+#include <readline/history.h>
 #include <pwd.h>
 #include <sys/stat.h>
 #include <sys/utsname.h>
@@ -31,7 +31,10 @@ extern void fore_back_grnd();
 extern void save_history();
 extern int retrive_history();
 extern void histt();
-extern void removespace1();
+extern char* removespace();
+extern void piping();
+extern void redirection();
+extern void parse_command();
 
 #define str (int) 1000000
 #define clear() printf("\033[H\033[J")

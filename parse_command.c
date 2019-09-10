@@ -1,39 +1,10 @@
 #include "shell.h"
-char *input_str , *output_str;
-size_t st = 1000000;
 
 int hist_cnt;
 
 void histt(int cn)
 {
 	hist_cnt = cn;
-}
-
-void removespace(char* string)
-{
-  int len = strlen(string),i,j,k;
-  for(i=0;i<len;i++)
-  {
-    if(string[i]!=' ')
-    {
-      break;
-    }
-  }
-
-  for(j=len-1;j>=0;j--)
-  {
-    if(string[j] != ' ' && string[j] != '\n')
-    {
-      break;
-    }
-  }
-  int cnt =0 ;
-  for(k=i;k<=j;k++)
-  {
-    output_str[cnt++] = string[k];
-  }
-
-  output_str[j+1] = '\0';
 }
 
 void parse_command(char *command , char *root)
@@ -175,7 +146,6 @@ void parse_command(char *command , char *root)
 	        if(strcmp(token1,"&"))
 	        {
 	          strcpy(com[cnt1],token1);
-	          // printf("ja  %s ",token1);
 	          cnt1++;
 	        }
 	        else
@@ -194,37 +164,4 @@ void parse_command(char *command , char *root)
   	}
 
   return;
-}
-
-
-int input(char *root)
-{	
-	// hist_cnt = hist;
-	// printf("%d\n",hist);
-    input_str = (char*)malloc(sizeof(char)*st);
-    output_str = (char*)malloc(sizeof(char)*st);
-
-    getline(&input_str , &st , stdin);
-    removespace(input_str);
-
-    char *token = strtok(output_str , ";");
-    char *com;
-    struct com{
-      char arr[1000];
-    };
-    struct com tokens[100];
-    int i=0;
-
-    while (token != NULL)
-    {
-        strcpy(tokens[i++].arr,token);
-        // printf("%s\n",tokens[i-1].arr);
-        token = strtok(NULL, ";");
-    }
-
-    for(int j=0;j<i;j++)
-    {
-      parse_command(tokens[j].arr,root);
-    }
-
 }

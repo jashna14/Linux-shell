@@ -5,34 +5,7 @@ struct his{
 };
 struct his hist[25];
 int y;
-char out_str[str];
-
-void removespace1(char* string)
-{
-  int len = strlen(string),i,j,k;
-  for(i=0;i<len;i++)
-  {
-    if(string[i]!=' ')
-    {
-      break;
-    }
-  }
-
-  for(j=len-1;j>=0;j--)
-  {
-    if(string[j] != ' ' && string[j] != '\n')
-    {
-      break;
-    }
-  }
-  int cnt =0 ;
-  for(k=i;k<=j;k++)
-  {
-    out_str[cnt++] = string[k];
-  }
-
-  out_str[j+1] = '\0';
-}
+char *out_str;
 
 void history(char *arg1 , char *arg2, int hist_cnt)
 {
@@ -91,6 +64,7 @@ void save_history(int hist_cnt)
 
 int retrive_history()
 {
+  out_str = (char*)malloc(sizeof(char)*str);
 	FILE *file;
 	file = fopen("history.txt","r");
 	if (file == NULL) 
@@ -105,14 +79,14 @@ int retrive_history()
     int cnt =0;
     while(getline(&input,&len,file)!= -1)
     {	
-    	removespace1(input);
+    	out_str = removespace(input);
     	strcpy(hist[cnt%21].arr,out_str);
     	out_str[0] ='\0';
     	cnt++;
     }
     
   	fclose(file);
-  	removespace1(hist[20].arr);
+  	out_str = removespace(hist[20].arr);
   	hist_cnt = atoi(out_str);
   	remove("history.txt");
 

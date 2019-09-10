@@ -44,7 +44,7 @@ int main( int argc, char * argv[])
 		}
 
     display(root);
-  	signal(SIGINT, SIG_IGN);
+  	// signal(SIGINT, SIG_IGN);
   	input(root);
 
   }
