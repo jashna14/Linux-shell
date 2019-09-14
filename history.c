@@ -7,16 +7,15 @@ struct his hist[25];
 int y;
 char *out_str;
 
-void history(char *arg1 , char *arg2, int hist_cnt)
+void history(char *arg1 , char *arg2, int hist_cnt,int flag)
 {
-  if(strcmp(arg1,"history") && !strcmp(arg2 ,"NULL"))
+  if(flag == 0)
   {
     strcpy(hist[hist_cnt%20].arr, arg1);
   }
 
-  else if(!strcmp(arg1,"history") && !strcmp(arg2 ,"NULL"))
+  else if(!strcmp(arg1,"history") && !strcmp(arg2 ,"NULL") && flag == 1)
   {
-    strcpy(hist[hist_cnt%20].arr, arg1);
     int lim = 0;
     int num = 10;
     if(hist_cnt-num+1 > 0)
@@ -29,9 +28,8 @@ void history(char *arg1 , char *arg2, int hist_cnt)
     }
   }
 
-  else if(!strcmp(arg1,"history") && strcmp(arg2 ,"NULL"))
+  else if(!strcmp(arg1,"history") && strcmp(arg2 ,"NULL") && flag == 1)
   {
-    strcpy(hist[hist_cnt%20].arr, arg1);
     int num = atoi(arg2);
     int lim = 0;
     if(hist_cnt-num+1 > 0)
@@ -57,7 +55,6 @@ void save_history(int hist_cnt)
 		fprintf(file,"%s\n",hist[i].arr);
 	}
 
-	// fwrite(&hist_cnt,sizeof(hist_cnt),1,file);
 	fprintf(file,"%d\n",hist_cnt+1);
 	fclose(file);
 }

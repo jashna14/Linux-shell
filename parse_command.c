@@ -1,10 +1,10 @@
 #include "shell.h"
 
-int hist_cnt;
+int hist_cnt1;
 
-void histt(int cn)
+void histt1(int cn)
 {
-	hist_cnt = cn;
+	hist_cnt1 = cn;
 }
 
 void parse_command(char *command , char *root)
@@ -13,12 +13,6 @@ void parse_command(char *command , char *root)
 
   	while(token1 != NULL)
   	{
-	    if(strcmp(token1,"history"))
-	    {
-	      history(token1,"NULL", hist_cnt);
-	      hist_cnt++;
-	    }
-
 
 	    if(!strcmp(token1,"pwd"))
 	    {
@@ -33,8 +27,7 @@ void parse_command(char *command , char *root)
 	      {
 	        token1 = "NULL";
 	      }
-	      history("history",token1 ,hist_cnt);
-	      hist_cnt++;
+	      history("history",token1 ,hist_cnt1-1,1);
 	      return;
 	    }
 
@@ -59,7 +52,7 @@ void parse_command(char *command , char *root)
 	        token1 = "NULL";
 	        echo(token1);
 	      }
-	      // printf("%s %s\n",token1 , root);
+
 	      else
 	      {
 	        while(token1 != NULL && strcmp(token1,"&"))
@@ -125,10 +118,40 @@ void parse_command(char *command , char *root)
 
 	    else if(!strcmp(token1,"quit") || !strcmp(token1,"q") || !strcmp(token1,"exit"))
 	    {
-	      save_history(hist_cnt-1);
+	      save_history(hist_cnt1-1);
 	      exit(0);
 	      return;
 	    }
+
+
+	    else if(!strcmp(token1,"setenv"))
+	    {
+	      token1 = strtok(NULL, " ");
+
+	      if(token1 == NULL || !strcmp(token1,"&"))
+	      {
+	        token1 = "NULL";
+	      }
+
+	      setenvo(token1);
+	      return;
+
+	    }
+
+	    else if(!strcmp(token1,"unsetenv"))
+	    {
+	      token1 = strtok(NULL, " ");
+
+	      if(token1 == NULL || !strcmp(token1,"&"))
+	      {
+	        token1 = "NULL";
+	      }
+
+	      unsetenvo(token1);
+	      return;
+
+	    }
+
 
 	    else
 	    {

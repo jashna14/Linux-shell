@@ -31,10 +31,13 @@ extern void fore_back_grnd();
 extern void save_history();
 extern int retrive_history();
 extern void histt();
+extern void histt1();
 extern char* removespace();
 extern void piping();
 extern void redirection();
 extern void parse_command();
+extern void setenvo();
+extern void unsetenvo();
 
 #define str (int) 1000000
 #define clear() printf("\033[H\033[J")
