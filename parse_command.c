@@ -153,6 +153,73 @@ void parse_command(char *command , char *root)
 	    }
 
 
+	    else if(!strcmp(token1,"jobs"))
+	    {
+	      jobs();
+	      return;
+
+	    }
+
+	    else if(!strcmp(token1,"overkill"))
+	    {
+	      overkill();
+	      return;
+
+	    }
+
+	    else if(!strcmp(token1,"kjobs"))
+	    {
+	      token1 = strtok(NULL, " ");
+	      char id[20] , signal[20];
+
+	      if(token1 != NULL)
+	      {
+	      	strcpy(id,token1);
+	      }
+	      else
+	      {
+	      	printf("Inappropriate No. of Arguments\n");
+	      	return;
+	      }
+
+	      token1 = strtok(NULL, " ");
+		  if(token1 != NULL)
+	      {
+	      	strcpy(signal,token1);
+	      }
+	      else
+	      {
+	      	printf("Inappropriate No. of Arguments\n");
+	      	return;
+	      }
+
+	      kjobs(id,signal);
+	      
+	      return;
+
+	    }
+
+	    else if(!strcmp(token1,"bg"))
+	    {
+	      token1 = strtok(NULL, " ");
+	      char id[20];
+
+	      if(token1 != NULL)
+	      {
+	      	strcpy(id,token1);
+	      }
+	      else
+	      {
+	      	printf("Inappropriate No. of Arguments\n");
+	      	return;
+	      }
+
+	      bg(id);
+	      
+	      return;
+
+	    }
+
 	    else
 	    {
 	      char *com[1000];

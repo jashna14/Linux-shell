@@ -19,6 +19,14 @@
 #include <signal.h>
 #include <inttypes.h>
 
+typedef struct{
+	int pid1;
+	int status;
+	char cmnd1[1000];
+}job;
+
+extern job jobs_array[100];
+
 extern void display();
 extern int input();
 extern void ls();
@@ -35,9 +43,13 @@ extern void histt1();
 extern char* removespace();
 extern void piping();
 extern void redirection();
+extern void jobs();
+extern void kjobs();
+extern void bg();
 extern void parse_command();
 extern void setenvo();
 extern void unsetenvo();
+extern void overkill();
 
 #define str (int) 1000000
 #define clear() printf("\033[H\033[J")

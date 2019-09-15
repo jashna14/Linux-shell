@@ -1,5 +1,6 @@
 #include "shell.h"
 
+int proc_cnt;
 int main( int argc, char * argv[])
 {
 
@@ -31,15 +32,41 @@ int main( int argc, char * argv[])
   cnt2 = retrive_history();
   histt(cnt2);
 
+  proc_cnt = 1;
+
   while(1)
   {
 		int pid, status;
 		if((pid = waitpid(-1, &status, WNOHANG | WUNTRACED)) > 0)
 		{
 			if (WIFEXITED(status))
-			{	
-				printf("pid: %d exited normally\n",pid);	
+			{
+				int l;
+				for(l =1;l<100;l++)
+				{
+					if(jobs_array[l].pid1 == pid)
+					{
+						jobs_array[l].status = 0;
+						break;
+					}
+				}
+				printf("%s with pid: %d exited normally\n",jobs_array[l].cmnd1,pid);	
 			}
+
+			else if(WIFSIGNALED(status))
+			{
+				int l;
+				for(l =1;l<100;l++)
+				{
+					if(jobs_array[l].pid1 == pid)
+					{
+						jobs_array[l].status = 0;
+						break;
+					}
+				}
+				printf("%s with pid: %d exited via Signal\n",jobs_array[l].cmnd1,pid);
+			}
+
 								
 		}
 
