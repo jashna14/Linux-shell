@@ -11,11 +11,9 @@ void unsetenvo(char *input)
 	{
 		if(unsetenv(input) < 0)
 		{
-			fprintf(stderr, "Variable could not be set\n");
+			fprintf(stderr, "Variable could not be unset\n");
 		}
 	}
-
-	printf("%s\n",input);
 
 	return;
 }

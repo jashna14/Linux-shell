@@ -1,49 +1,26 @@
 #include "shell.h"
 
-void setenvo(char *input)
+void setenvo(char *input1 , char *input2)
 {
-	if(!strcmp(input, "NULL"))
+	if(input1[0] == '\0')
 	{
 		printf("Please enter the correct number of arguments\n");
 	}
 
 	else
 	{
-		int len = strlen(input),i;
 		char var[str];
 		char value[str];
-		i=0;
-
-		while(input[i] != '[')
-		{
-			var[i] = input[i];
-			i++;
-		}
-		var[i] = '\0';
-
-		if(input[i+1] == ']')
-		{
-			value[0] = '\0';
-		}
-
-		else
-		{
-			i++;
-			int j= i;
-			while(input[i] != ']')
-			{
-				value[i-j] = input[i];
-				i++;
-			}
-			value[i-j] = '\0';
-		}
+		var[0] = '\0';
+		value[0] = '\0';
+		strcpy(var,input1);
+		strcpy(value,input2);
 
 		if(setenv(var , value , 1) < 0)
 		{
 			fprintf(stderr, "Variable could not be set\n");
 		}
 
-		printf("%s\n",var);
 
 	}
 	return;
