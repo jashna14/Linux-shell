@@ -116,7 +116,7 @@ void parse_command(char *command , char *root)
 	      return;
 	    }
 
-	    else if(!strcmp(token1,"quit") || !strcmp(token1,"q"))
+	    else if(!strcmp(token1,"quit"))
 	    {
 	      save_history(hist_cnt1-1);
 	      exit(0);

@@ -99,8 +99,6 @@ char* up_command(int up_cnt , int hist_cnt)
   char re[2];
   re[0] = 'x';
   re[1] = '\0';
-  // printf("%d %d\n",up_cnt, hist_cnt);
-  // printf("%s\n",hist[(hist_cnt - up_cnt)%20].arr);
   return hist[(hist_cnt - up_cnt)%20].arr; 
   
 }

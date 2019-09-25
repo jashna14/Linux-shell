@@ -108,6 +108,15 @@ int input(char *root)
 	    		strcpy(up_cmnd, up_command(cnt_up , hist_cnt));
 	    		output_str[0] = '\0';
 	    		output_str = removespace(up_cmnd);
+	    		printf("\033[1;31m");
+    			printf("%s@%s :" , user , host);
+			    printf("\033[0m");
+
+			    printf("\033[0;32m");
+			    printf(" %s > " ,dir_shell);
+			    printf("\033[0m");
+
+			    printf("%s\n",output_str);
 	    	}	
     	}
     }	

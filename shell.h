@@ -27,6 +27,9 @@ typedef struct{
 
 extern job jobs_array[100];
 extern int foregrnd_pid;
+extern char* user;
+extern char* host;
+extern char* dir_shell;
 
 extern void display();
 extern int input();
