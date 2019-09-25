@@ -9,7 +9,7 @@ char *out_str;
 
 void history(char *arg1 , char *arg2, int hist_cnt,int flag)
 {
-  if(flag == 0)
+  if(flag == 0 && strcmp(arg1,"\n"))
   {
     strcpy(hist[hist_cnt%20].arr, arg1);
   }
@@ -18,7 +18,7 @@ void history(char *arg1 , char *arg2, int hist_cnt,int flag)
   {
     int lim = 0;
     int num = 10;
-    if(hist_cnt-num+1 > 0)
+    if(hist_cnt-num+1 >= 0)
     {
       lim = hist_cnt-num+1;
     }
@@ -31,8 +31,12 @@ void history(char *arg1 , char *arg2, int hist_cnt,int flag)
   else if(!strcmp(arg1,"history") && strcmp(arg2 ,"NULL") && flag == 1)
   {
     int num = atoi(arg2);
+    if(num > 20)
+    {
+      num = 20;
+    }
     int lim = 0;
-    if(hist_cnt-num+1 > 0)
+    if(hist_cnt-num+1 >= 0)
     {
       lim = hist_cnt-num+1;
     }
@@ -67,7 +71,6 @@ int retrive_history()
 	if (file == NULL) 
     { 
         return 0;
-        exit (1); 
     }
 
     char *input = NULL;
@@ -90,3 +93,14 @@ int retrive_history()
   	return hist_cnt;
 }
 
+char* up_command(int up_cnt , int hist_cnt)
+{
+  int num = up_cnt;
+  char re[2];
+  re[0] = 'x';
+  re[1] = '\0';
+  // printf("%d %d\n",up_cnt, hist_cnt);
+  // printf("%s\n",hist[(hist_cnt - up_cnt)%20].arr);
+  return hist[(hist_cnt - up_cnt)%20].arr; 
+  
+}

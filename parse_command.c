@@ -116,7 +116,7 @@ void parse_command(char *command , char *root)
 	      return;
 	    }
 
-	    else if(!strcmp(token1,"quit") || !strcmp(token1,"q") || !strcmp(token1,"exit"))
+	    else if(!strcmp(token1,"quit") || !strcmp(token1,"q"))
 	    {
 	      save_history(hist_cnt1-1);
 	      exit(0);
@@ -179,7 +179,7 @@ void parse_command(char *command , char *root)
 
 	    }
 
-	    else if(!strcmp(token1,"kjobs"))
+	    else if(!strcmp(token1,"kjob"))
 	    {
 	      token1 = strtok(NULL, " ");
 	      char id[20] , signal[20];

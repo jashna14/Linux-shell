@@ -26,6 +26,7 @@ typedef struct{
 }job;
 
 extern job jobs_array[100];
+extern int foregrnd_pid;
 
 extern void display();
 extern int input();
@@ -50,6 +51,7 @@ extern void parse_command();
 extern void setenvo();
 extern void unsetenvo();
 extern void overkill();
+extern char* up_command();
 
 #define str (int) 1000000
 #define clear() printf("\033[H\033[J")

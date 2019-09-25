@@ -34,6 +34,15 @@ int main( int argc, char * argv[])
 
   proc_cnt = 1;
 
+  void handler(int signal_num)
+  {
+  	if(foregrnd_pid != 1)
+  	{
+  		kill(foregrnd_pid , signal_num);
+  	}
+  	return;
+  }
+
   while(1)
   {
 		int pid, status;
@@ -70,8 +79,12 @@ int main( int argc, char * argv[])
 								
 		}
 
+
     display(root);
-  	// signal(SIGINT, SIG_IGN);
+  	signal(SIGINT, handler);
+  	signal(SIGTSTP, handler);
+  	signal(SIGQUIT, handler);
+  	signal(SIGCHLD, handler);
   	input(root);
 
   }
