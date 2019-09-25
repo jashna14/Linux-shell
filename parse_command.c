@@ -126,28 +126,8 @@ void parse_command(char *command , char *root)
 
 	    else if(!strcmp(token1,"setenv"))
 	    {
-	     	token1 = strtok(NULL, " ");
-	      	char var[str] , value[str];
-	      	var[0] = '\0';
-	      	value[0] = '\0';
-
-	      	if(token1 != NULL && strcmp(token1,"&"))
-	      	{
-	 			strcpy(var,token1);
-	      	}
-
-	     	token1 = strtok(NULL, " ");
-
-	      	while(token1 != NULL && strcmp(token1,"&"))
-	      	{
-	      		strcat(value,token1);
-	      		strcat(value," ");
-	     		token1 = strtok(NULL, " ");
-	      	}
-
-	      	setenvo(var,value);
+	    	setenvo(&command[7]);
 	      	return;
-
 	    }
 
 	    else if(!strcmp(token1,"unsetenv"))

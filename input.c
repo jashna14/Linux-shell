@@ -34,6 +34,7 @@ void evaluate(char *root)
 
     for(int j=0;j<i;j++)
     {
+    	foregrnd_pid = -2;
     	piping(tokens[j].arr , root);
     }
 
@@ -75,7 +76,12 @@ int input(char *root)
     input_str = (char*)malloc(sizeof(char)*st);
     output_str = (char*)malloc(sizeof(char)*st);
 
-    getline(&input_str , &st , stdin);
+    if(getline(&input_str , &st , stdin) ==-1)
+    {
+    	printf("\r");
+    }
+
+
     output_str = removespace(input_str);
     if(output_str[0] == '\33')
     {	

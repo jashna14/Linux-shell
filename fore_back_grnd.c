@@ -9,14 +9,12 @@ void fore_back_grnd(char ** com,int and_flag , int cnt)
   int pid,status;
   pid = fork();
 
-  if(pid < 0)
-  {
-  	perror("check");
-  	return;
-  }
-
   if(pid == 0)
   {
+  	if(and_flag == 1)
+  	{
+  		setpgid(0,0);
+  	}
 
     if(execvp(com[0],com) == -1)
     {
@@ -28,11 +26,7 @@ void fore_back_grnd(char ** com,int and_flag , int cnt)
   {
   	foregrnd_pid = pid;
     waitpid(pid,&status, WUNTRACED);
-    if(WIFEXITED(status))
-    {
-    	foregrnd_pid = -2;
-    }
-
+  
     if(WIFSTOPPED(status))
     {
 	    int k;

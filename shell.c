@@ -36,7 +36,7 @@ int main( int argc, char * argv[])
 
   void handler(int signal_num)
   {
-  	if(foregrnd_pid != 1)
+  	if(foregrnd_pid > 0)
   	{
   		kill(foregrnd_pid , signal_num);
   	}
