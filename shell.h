@@ -58,5 +58,5 @@ extern void overkill();
 extern char* up_command();
 extern void cronjob();
 
-#define str (int) 1000000
+#define str (int) 1000
 #define clear() printf("\033[H\033[J")

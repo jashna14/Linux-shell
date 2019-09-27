@@ -170,6 +170,26 @@ void cronjob(char* command , char* root)
 				return;
 			}
 
+			if(pid > 0)
+			{
+				int k;
+				char comm[1000];
+				comm[0] = '\0';
+				strcat(comm,"<cronjob ");
+				for(k=1;k<100;k++)
+				{
+					if(jobs_array[k].cmnd1[0] == '\0')
+					{	
+					  	jobs_array[k].pid1 = pid;
+					  	jobs_array[k].status = 1;
+					  	strcat(comm,command);
+					  	strcat(comm,">");
+					  	strcpy(jobs_array[k].cmnd1,comm);
+					  	break;
+				  	}	
+			  	}
+			}
+
 			else if(pid < 0)
  			{
     			printf("error forking\n");

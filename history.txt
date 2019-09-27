@@ -1,0 +1,21 @@
+quit
+firefox &
+overkill
+cronjob -c [ls -l] -p 6 -t 3
+ls -l
+quir
+quit
+cronjob -c [ls] -t 3 -p 6
+quit
+cronjob -c [ls] -p 6 -t 3
+quit
+firefox
+firefox &
+jobs
+fg 1
+quit
+firefox &
+fg 1
+quit
+firefox &
+59

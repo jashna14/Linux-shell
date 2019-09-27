@@ -15,6 +15,7 @@ void fg(char* id)
 				cnt ++;
 				if(cnt == id1)
 				{
+					printf("%s\n",jobs_array[i].cmnd1);
 					kill(jobs_array[i].pid1 , SIGCONT);
 					waitpid(jobs_array[i].pid1, &status, WUNTRACED);
 					jobs_array[i].status = 0;

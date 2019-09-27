@@ -56,7 +56,7 @@ int main( int argc, char * argv[])
 					if(jobs_array[l].pid1 == pid)
 					{
 						jobs_array[l].status = 0;
-				    printf("%s with pid: %d exited normally\n",jobs_array[l].cmnd1,pid);	
+				    printf("\33[2K\r%s with pid: %d exited normally\n",jobs_array[l].cmnd1,pid);	
 						break;
 					}
 				}
@@ -70,7 +70,7 @@ int main( int argc, char * argv[])
 					if(jobs_array[l].pid1 == pid)
 					{
 						jobs_array[l].status = 0;
-				    printf("%s with pid: %d exited via Signal\n",jobs_array[l].cmnd1,pid);
+				    printf("\33[2K\r%s with pid: %d exited via Signal\n",jobs_array[l].cmnd1,pid);
 						break;
 					}
 				}

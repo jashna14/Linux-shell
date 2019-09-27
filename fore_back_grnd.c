@@ -81,8 +81,8 @@ void fore_back_grnd(char ** com,int and_flag , int cnt)
 
 		  	strcpy(jobs_array[k].cmnd1,comm);
 		  	break;
-		}	
-	}  	
+		  }	
+	  }  	
 
     printf("%s process with pid : %d started\n",comm,pid);
   	comm[0] = '\0';

@@ -38,7 +38,7 @@ void ls(int l_flag,int a_flag, char *path , char *root)
   struct group *grp;
   dir = opendir(final_path);
   char st[1000];
-  char time_string[str/1000] = "";
+  char time_string[str] = "";
   time_t now = time (NULL);
   struct tm timefl , timenow;
 
