@@ -100,6 +100,7 @@ void parse_command(char *command , char *root)
 
 	        token1 = strtok(NULL, " ");
 	      }
+
 	      ls(l_flag,a_flag,path,root);
 
 	      return;
@@ -207,6 +208,27 @@ void parse_command(char *command , char *root)
 	      }
 
 	      bg(id);
+	      
+	      return;
+
+	    }
+
+	    else if(!strcmp(token1,"fg"))
+	    {
+	      token1 = strtok(NULL, " ");
+	      char id[20];
+
+	      if(token1 != NULL)
+	      {
+	      	strcpy(id,token1);
+	      }
+	      else
+	      {
+	      	printf("Inappropriate No. of Arguments\n");
+	      	return;
+	      }
+
+	      fg(id);
 	      
 	      return;
 

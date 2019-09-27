@@ -27,6 +27,10 @@ void ls(int l_flag,int a_flag, char *path , char *root)
     strcpy(final_path,".");
   }
 
+  final_path[1] = '\0';
+
+
+
   DIR *dir;
   struct stat info;
   struct dirent *file;
@@ -34,7 +38,7 @@ void ls(int l_flag,int a_flag, char *path , char *root)
   struct group *grp;
   dir = opendir(final_path);
   char st[1000];
-  char time_string[str] = "";
+  char time_string[str/1000] = "";
   time_t now = time (NULL);
   struct tm timefl , timenow;
 

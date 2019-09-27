@@ -12,31 +12,44 @@ void histt(int cn)
 void evaluate(char *root)
 {
 	if(output_str[0] != '\0')
-    {
-	    history(output_str,"NULL", hist_cnt ,0);
-    	hist_cnt++;
-    	histt1(hist_cnt);
-    }	
+  {
+    history(output_str,"NULL", hist_cnt ,0);
+  	hist_cnt++;
+  	histt1(hist_cnt);
+    
+    char oo[str];
 
-    char *token = strtok(output_str , ";");
-    char *com;
-    struct com{
-      char arr[1000];
-    };
-    struct com tokens[100];
-    int i=0;
+    strcpy(oo,output_str);
 
-    while (token != NULL)
+    char *tokenx = strtok(oo , " ");
+    if(!strcmp(tokenx,"cronjob"))
     {
-        strcpy(tokens[i++].arr,token);
-        token = strtok(NULL, ";");
+      cronjob(&output_str[8], root);
+      return;
     }
+  }	
 
-    for(int j=0;j<i;j++)
-    {
-    	foregrnd_pid = -2;
-    	piping(tokens[j].arr , root);
-    }
+
+
+  char *token = strtok(output_str , ";");
+  char *com;
+  struct com{
+    char arr[1000];
+  };
+  struct com tokens[100];
+  int i=0;
+
+  while (token != NULL)
+  {
+      strcpy(tokens[i++].arr,token);
+      token = strtok(NULL, ";");
+  }
+
+  for(int j=0;j<i;j++)
+  {
+  	foregrnd_pid = -2;
+  	piping(tokens[j].arr , root);
+  }
 
 }
 

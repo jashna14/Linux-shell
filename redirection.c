@@ -22,6 +22,7 @@ void redirection(char *command , char *root)
 	if(flag == 0)
 	{
 		parse_command(command , root);
+		return;
 	}
 
 	else

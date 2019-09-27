@@ -50,11 +50,13 @@ extern void redirection();
 extern void jobs();
 extern void kjobs();
 extern void bg();
+extern void fg();
 extern void parse_command();
 extern void setenvo();
 extern void unsetenvo();
 extern void overkill();
 extern char* up_command();
+extern void cronjob();
 
 #define str (int) 1000000
 #define clear() printf("\033[H\033[J")

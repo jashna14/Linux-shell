@@ -13,7 +13,7 @@ void echo(char* string)
   }
   else
   {
-    printf("%s ",string);
+    printf("\33[2K\r%s ",string);
   }
 
   return;
