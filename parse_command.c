@@ -134,13 +134,24 @@ void parse_command(char *command , char *root)
 	    else if(!strcmp(token1,"unsetenv"))
 	    {
 	      token1 = strtok(NULL, " ");
-
+	      char idddd[1000];
 	      if(token1 == NULL || !strcmp(token1,"&"))
 	      {
-	        token1 = "NULL";
+	        strcpy(idddd,"NULL");
 	      }
+	      else
+	      {
+	      	strcpy(idddd,token1);
+	      	token1 = strtok(NULL, " ");
+	      	if(token1 != NULL && strcmp(token1,"&"))
+	      	{
+		        strcpy(idddd,"NULL");
+	      	}
 
-	      unsetenvo(token1);
+	      }	
+
+
+	      unsetenvo(idddd);
 	      return;
 
 	    }
@@ -197,9 +208,18 @@ void parse_command(char *command , char *root)
 	      token1 = strtok(NULL, " ");
 	      char id[20];
 
-	      if(token1 != NULL)
+	      if(token1 != NULL && strcmp(token1,"&"))
 	      {
 	      	strcpy(id,token1);
+
+	      	token1 = strtok(NULL, " ");
+	      	if(token1 != NULL && strcmp(token1,"&"))
+	      	{
+	      		printf("Inappropriate No. of Arguments\n");
+	      		return;
+	      	}
+
+
 	      }
 	      else
 	      {
@@ -218,9 +238,15 @@ void parse_command(char *command , char *root)
 	      token1 = strtok(NULL, " ");
 	      char id[20];
 
-	      if(token1 != NULL)
+	      if(token1 != NULL && strcmp(token1,"&"))
 	      {
 	      	strcpy(id,token1);
+	      	token1 = strtok(NULL, " ");
+	      	if(token1 != NULL && strcmp(token1,"&"))
+	      	{
+	      		printf("Inappropriate No. of Arguments\n");
+	      		return;
+	      	}
 	      }
 	      else
 	      {

@@ -13,8 +13,8 @@ void fore_back_grnd(char ** com,int and_flag , int cnt)
   {
   	if(and_flag == 1)
   	{	
-		setpgid(0,0);
-	}	
+		  setpgid(0,0);
+	  }	
 
     if(execvp(com[0],com) == -1)
     {
